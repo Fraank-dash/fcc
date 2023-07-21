@@ -28,7 +28,6 @@ echo  "$($PSQL "SELECT COUNT(*) FROM games WHERE winner_goals > 2;")"
 echo -e "\nWinner of the 2018 tournament team name:"
 echo  "$($PSQL "SELECT name FROM games INNER JOIN teams ON games.winner_id=teams.team_id WHERE year=2018 AND round ILIKE 'final';")"
 
-
 echo -e "\nList of teams who played in the 2014 'Eighth-Final' round:"
 echo "$($PSQL "SELECT DISTINCT(teams.name) FROM teams LEFT JOIN games ON teams.team_id=games.winner_id LEFT JOIN games as g2 ON teams.team_id=g2.opponent_id WHERE (games.year=2014 OR g2.year=2014) AND (games.round='Eighth-Final' OR g2.round='Eighth-Final') ORDER BY teams.name")"
 
